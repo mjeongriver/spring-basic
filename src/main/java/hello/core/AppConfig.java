@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 //애플리케이션의 실제 동작에 필요한 구현 객체를 생성 한다.
 //객체의 생성과 연결은 'AppConfig'가 담당한다.
 //역할과 구현을 분리하여 리팩토링 -> 애플리케이션 전체 구성이 어떻게 되어있는지 빠르게 파악 가능
+//bean 이름은 메서드 이름을 사용하고 항상 다른 이름을 부여해야 한다.
 @Configuration //설정 정보
 public class AppConfig {
 
