@@ -6,7 +6,7 @@ public class StatefulService {
 
     public int order(String name, int price) {
         System.out.println("name = " + name + " price = " + price);
-        //this.price = price; // 여기가 문제!
+        //this.price = price; // 여기가 문제! 스프링 빈은 항상 무상태(stateless)로 설계해야 한다.
         return price;
     }
 
