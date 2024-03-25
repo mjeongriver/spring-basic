@@ -30,4 +30,13 @@ public class ConfigurationSingletonTest {
         Assertions.assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
 
     }
+
+    @Test
+    void configurationDeep() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        //@Configuration을 제거하니까 singleton이 깨지고, 있을 경우 cglib을 스프링이 내부적으로 상속을 받아서 새로운 클래스를 만들어서 바이트코드 조작을 한다.
+        System.out.println("bean = " + bean.getClass());
+    }
 }
