@@ -4,14 +4,13 @@ import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderServiceImpl implements OrderService {
 
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
     //필드 주입
     //@Autowired private MemberRepository memberRepository;
@@ -32,6 +31,14 @@ public class OrderServiceImpl implements OrderService {
     }
      */
 
+    //일반 메서드 주입(위에 final 키워드 삭제)
+    //의존관계 자동 주입은 스프링 컨테이너가 관리하는 스프링 빈이어야 동작한다.
+//    @Autowired
+//    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//       this.memberRepository = memberRepository;
+//       this.discountPolicy = discountPolicy;
+//    }
+
     //생성자 하나만 있을 경우에는 @Autowired 생략 가능
     //불변, 필수 의존관계에 사용
     @Autowired
@@ -39,14 +46,6 @@ public class OrderServiceImpl implements OrderService {
         System.out.println("1. OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }
-
-    //일반 메서드 주입(위에 final 키워드 삭제)
-    //의존관계 자동 주입은 스프링 컨테이너가 관리하는 스프링 빈이어야 동작한다. 
-    @Autowired
-    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-       this.memberRepository = memberRepository;
-       this.discountPolicy = discountPolicy;
     }
 
     @Override
