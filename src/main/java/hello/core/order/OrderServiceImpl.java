@@ -5,6 +5,7 @@ import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -43,6 +44,8 @@ public class OrderServiceImpl implements OrderService {
 
     //생성자 하나만 있을 경우에는 @Autowired 생략 가능
     //불변, 필수 의존관계에 사용
+    // @Autowired 필드명 매칭
+
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         System.out.println("1. OrderServiceImpl.OrderServiceImpl");
